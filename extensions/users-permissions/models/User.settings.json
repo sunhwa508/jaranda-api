@@ -62,6 +62,19 @@
     "menus": {
       "collection": "menus",
       "via": "user"
+    },
+    "card_info": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "is_admin": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
