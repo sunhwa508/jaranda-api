@@ -34,7 +34,7 @@ const formatError = error => [
       request: { body },
       state: { userAbility, admin },
     } = ctx;
-    const { email, username, password, menus } = body;
+    const { email, username, password, menus, card_info, age, address } = body;
 
     const { pm, entity: user } = await findEntityAndCheckPermissions(
       userAbility,
@@ -55,9 +55,23 @@ const formatError = error => [
       return ctx.badRequest('username.notNull');
     }
 
+    if (_.has(body, 'age') && !age) {
+      return ctx.badRequest('age.notNull');
+    }
+
+    if (_.has(body, 'address') && !address) {
+      return ctx.badRequest('address.notNull');
+    }
+
+    if (_.has(body, 'card_info') && !card_info) {
+      return ctx.badRequest('card_info.notNull');
+    }
+
     if (_.has(body, 'password') && !password && user.provider === 'local') {
       return ctx.badRequest('password.notNull');
     }
+
+
 
     if (_.has(body, 'username')) {
       const userWithSameUsername = await strapi
@@ -111,6 +125,60 @@ const formatError = error => [
         );
       }
       body.email = body.email.toLowerCase();
+    }
+
+    if (_.has(body, 'age') && advancedConfigs.unique_age) {
+      const userWithSameAge = await strapi
+        .query('user', 'users-permissions')
+        .findOne({ age: age });
+
+      if (userWithSameAge && userWithSameAge.id != id) {
+        return ctx.badRequest(
+          null,
+          formatError({
+            id: 'Auth.form.error.age.taken',
+            message: 'Age already taken',
+            field: ['age'],
+          })
+        );
+      }
+      body.age = body.age;
+    }
+
+    if (_.has(body, 'card_info') && advancedConfigs.unique_card_info) {
+      const userWithSameCardInfo = await strapi
+        .query('user', 'users-permissions')
+        .findOne({ card_info: card_info });
+
+      if (userWithSameCardInfo && userWithSameCardInfo.id != id) {
+        return ctx.badRequest(
+          null,
+          formatError({
+            id: 'Auth.form.error.card_info.taken',
+            message: 'card_info already taken',
+            field: ['card_info'],
+          })
+        );
+      }
+      body.card_info = body.card_info;
+    }
+
+    if (_.has(body, 'address') && advancedConfigs.unique_address) {
+      const userWithSameAddress = await strapi
+        .query('user', 'users-permissions')
+        .findOne({ address: address });
+
+      if (userWithSameAddress && userWithSameAddress.id != id) {
+        return ctx.badRequest(
+          null,
+          formatError({
+            id: 'Auth.form.error.card_info.taken',
+            message: 'card_info already taken',
+            field: ['card_info'],
+          })
+        );
+      }
+      body.address = body.address;
     }
 
    
