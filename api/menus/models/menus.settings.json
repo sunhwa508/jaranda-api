@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menus",
+  "info": {
+    "name": "menus"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu_name": {
+      "type": "string"
+    },
+    "user": {
+      "via": "menus",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}
