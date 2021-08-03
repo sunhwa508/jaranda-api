@@ -59,10 +59,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "menus": {
-      "collection": "menus",
-      "via": "user"
-    },
     "card_info": {
       "type": "string"
     },
@@ -75,6 +71,10 @@
     "is_admin": {
       "type": "boolean",
       "default": false
+    },
+    "menus": {
+      "via": "users",
+      "collection": "menus"
     }
   }
 }

@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "menus",
   "info": {
-    "name": "menus"
+    "name": "menus",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,10 +15,11 @@
     "menu_name": {
       "type": "string"
     },
-    "user": {
-      "via": "menus",
+    "users": {
       "plugin": "users-permissions",
-      "model": "user"
+      "collection": "user",
+      "via": "menus",
+      "dominant": true
     }
   }
 }
