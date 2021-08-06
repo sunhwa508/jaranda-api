@@ -1,7 +1,7 @@
 # Strapi application [feat.자란다 assignment]
 [🏄🏻 Assignment3 자란다](https://www.notion.so/Assignment-3-9fdda37ca68a4748a3e034d80e4533ef)
 
-## 프리온보딩 과제 자란다 페이지의 api 개발프로젝트
+## 프리온보딩 과제 자란다 api 개발프로젝트
 
 ![화면 기록 2021-08-06 오후 4 08 02](https://user-images.githubusercontent.com/61695175/128471332-356e4ac6-a3d6-4a87-a346-4e33853441a2.gif)
 
