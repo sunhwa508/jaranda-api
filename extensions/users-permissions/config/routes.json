@@ -2,7 +2,7 @@
     "routes":[
         {
             "method": "PUT",
-            "path": "/user/:id",
+            "path": "/custom/:id",
             "handler": "User.update",
             "config": {
               "policies": [],

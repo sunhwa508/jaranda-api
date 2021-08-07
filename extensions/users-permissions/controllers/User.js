@@ -2,18 +2,11 @@
 
 const _ = require('lodash');
 
-const { contentTypes: sanitizeEntity } = require('strapi-utils');
-
-const sanitizeUser = user => 
-sanitizeEntity(user, {
-  model: strapi.query('user', 'users-permissions').model
-})
-
 const formatError = error => [
   { messages: [{ id: error.id, message: error.message, field: error.field }] },
 ];
   
-  module.exports = {
+module.exports = {
   /**
    * Update a/an user record.
    * @return {Object}
@@ -45,8 +38,8 @@ const formatError = error => [
 
     if (_.has(body, 'menus') && !menus) {
       return ctx.badRequest('menus.notNull');
-
     }
+
     if (_.has(body, 'email') && !email) {
       return ctx.badRequest('email.notNull');
     }
@@ -72,7 +65,6 @@ const formatError = error => [
     }
 
 
-
     if (_.has(body, 'username')) {
       const userWithSameUsername = await strapi
         .query('user', 'users-permissions')
@@ -93,7 +85,7 @@ const formatError = error => [
 
     if (_.has(body, 'menus')) {
       const userWithSameMenus = await strapi
-        .query('user', 'users-permissions', 'menus')
+        .query('user', 'users-permissions')
         .findOne({ menus });
 
       if (userWithSameMenus && userWithSameMenus.id != id) {
@@ -182,8 +174,6 @@ const formatError = error => [
     }
 
    
-    
-
     const sanitizedData = pm.pickPermittedFieldsOf(body, { subject: pm.toSubject(user) });
     const updateData = _.omit({ ...sanitizedData, updated_by: admin.id }, 'created_by');
 
