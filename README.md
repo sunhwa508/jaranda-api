@@ -1,6 +1,4 @@
 # Strapi application [feat.자란다 assignment]
-[🏄🏻 Assignment3 자란다](https://www.notion.so/Assignment-3-9fdda37ca68a4748a3e034d80e4533ef)
-
 ## strapi로 api 뽑기 🤹🏻
 [strapi로 만든 API 배포](https://velog.io/@sunhwa508/strapi%EB%A1%9C-%EB%A7%8C%EB%93%A0-API-%EB%B0%B0%ED%8F%AC-%ED%9B%84-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0)
 
